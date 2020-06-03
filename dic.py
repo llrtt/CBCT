@@ -23,7 +23,7 @@ for i in (all_CT_paths):
         c_paths = list(c_paths.glob('*'))
         c_paths = [str(p) for p in c_paths]
         for CT in c_paths:
-            if(CT.find('DCM') == -1):
+            if(CT.find('dir')):
                 continue
             dcm = pydicom.read_file(CT, force=True)
             dcm.file_meta.TransferSyntaxUID = pydicom.uid.ImplicitVRLittleEndian
@@ -43,3 +43,9 @@ for i in (all_CT_paths):
 #     dcm.file_meta.TransferSyntaxUID = pydicom.uid.ImplicitVRLittleEndian
 #     plt.imshow(dcm.pixel_array,cmap='gray')
 #     plt.show()
+
+# plt.figure()
+# dcm = pydicom.read_file(r'D:/CBCT to sCT/0000397791/day15/CT_1.3.46.423632.3358082018121771757843.68',force=True)
+# dcm.file_meta.TransferSyntaxUID = pydicom.uid.ImplicitVRLittleEndian
+# plt.imshow(dcm.pixel_array,cmap='gray')
+# plt.show()
